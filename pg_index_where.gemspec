@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = PgIndexWhere::VERSION
   spec.authors       = ["Yamamoto Kazuhisa"]
   spec.email         = ["ak.hisashi@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{add_index can use where on PostgreSQL}
+  spec.summary       = %q{add_index can use where on PostgreSQL}
   spec.homepage      = ""
   spec.license       = "MIT"
 
