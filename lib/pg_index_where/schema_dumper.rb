@@ -17,7 +17,7 @@ module ActiveRecord
           index_orders = (index.orders || {})
           statement_parts << (':order => ' + index.orders.inspect) unless index_orders.empty?
 
-          index_where = index_with_where(table, index.name)
+          index_where = index_with_where(index.name)
           statement_parts << (':where => ' + index_where.inspect) unless index_where.nil?
 
           '  ' + statement_parts.join(', ')
@@ -28,23 +28,15 @@ module ActiveRecord
       end
     end
 
-    def index_with_where(table, name)
+    def index_with_where(name)
       sql = <<-EOS
-        SELECT distinct i.relname, pg_get_indexdef(d.indexrelid)
-                   FROM pg_class t
-                   INNER JOIN pg_index d ON t.oid = d.indrelid
-                   INNER JOIN pg_class i ON d.indexrelid = i.oid
-                   WHERE i.relkind = 'i'
-                     AND d.indisprimary = 'f'
-                     AND t.relname = '#{table}'
-                     AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
-                     AND i.relname = '#{name}'
-                  ORDER BY i.relname
+        select pg_get_expr(i.indpred, i.indrelid) from pg_class c
+        inner join pg_index i on c.oid = i.indexrelid
+        where c.relname = '#{name}';
       EOS
       query_result = @connection.exec_query(sql).first
       return nil unless query_result
-      query_result['pg_get_indexdef'] =~ /WHERE \((.+)\)$/
-      $1
+      query_result['pg_get_expr']
     end
   end
 end
