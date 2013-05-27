@@ -1,6 +1,7 @@
 module ActiveRecord
   module ConnectionAdapters
     module SchemaStatements
+      AAA = 123
       def add_index(table_name, column_name, options = {})
         where = options[:where] ? "where #{options[:where]}" : ''
         index_name, index_type, index_columns = add_index_options(table_name, column_name, options)
