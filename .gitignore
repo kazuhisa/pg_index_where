@@ -17,3 +17,4 @@ test/version_tmp
 tmp
 .idea/
 log/
+spec/db/schema.rb

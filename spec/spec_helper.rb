@@ -11,7 +11,7 @@ require File.join(File.dirname(__FILE__), 'fake_app')
 require 'rspec/rails'
 
 RSpec.configure do |config|
-  config.before :all do
-    CreateAllTables.up unless ActiveRecord::Base.connection.table_exists? 'customers'
-  end
+  #config.before :all do
+  #  CreateAllTables.up unless ActiveRecord::Base.connection.table_exists? 'customers'
+  #end
 end
