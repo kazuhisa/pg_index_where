@@ -35,8 +35,7 @@ module ActiveRecord
         where c.relname = '#{name}';
       EOS
       query_result = @connection.exec_query(sql).first
-      return nil unless query_result
-      query_result['pg_get_expr']
+      query_result ? query_result['pg_get_expr'] : nil
     end
   end
 end
