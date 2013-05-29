@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = PgIndexWhere::VERSION
   spec.authors       = ['Yamamoto Kazuhisa']
   spec.email         = ['ak.hisashi@gmail.com']
-  spec.description   = %q{add_index can use where on PostgreSQL}
-  spec.summary       = %q{add_index can use where on PostgreSQL}
-  spec.homepage      = ''
+  spec.description   = %q{add_index can use 'where' options on PostgreSQL}
+  spec.summary       = %q{In PostgreSQL, when specifying a unique index, 'Where' can be used. It enables use on Rails. }
+  spec.homepage      = 'https://github.com/kazuhisa/pg_index_where'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 2.13'
   spec.add_development_dependency 'rails', '>= 3.0.7'
   spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'acts_as_paranoid'
   spec.add_dependency 'pg', '~> 0.15'
   spec.add_dependency 'activerecord', '>= 3.0.7'
 end
