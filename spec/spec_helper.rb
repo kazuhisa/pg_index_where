@@ -11,7 +11,8 @@ require File.join(File.dirname(__FILE__), 'fake_app')
 require 'rspec/rails'
 
 RSpec.configure do |config|
-  #config.before :all do
-  #  CreateAllTables.up unless ActiveRecord::Base.connection.table_exists? 'customers'
-  #end
+  config.before :all do
+    ActiveRecord::Migration.verbose = false
+    ActiveRecord::Migrator.rollback(%w(spec/db/migrate), 2)
+  end
 end
