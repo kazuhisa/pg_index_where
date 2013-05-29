@@ -1,6 +1,6 @@
 # PgIndexWhere
 
-TODO: Write a gem description
+In PostgreSQL, when specifying a unique index, 'where' can be used. It enables use on Rails.
 
 ## Installation
 
@@ -18,7 +18,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add this option your migrate files.
+
+    :where => 'deleted_at is null'
+   
+Examples.
+
+    class AddIndex < ActiveRecord::Migration
+      def up
+        add_index "customers", ["code"], :name => "customers_idx01", :unique => true, :where => 'deleted_at is null'
+      end
+      
+      def down
+        remove_index "customers", :name => "customers_idx01"
+      end
+    end
+
 
 ## Contributing
 
