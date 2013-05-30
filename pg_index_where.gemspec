@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = PgIndexWhere::VERSION
   spec.authors       = ['Yamamoto Kazuhisa']
   spec.email         = ['ak.hisashi@gmail.com']
-  spec.description   = %q{add_index can use 'where' options on PostgreSQL}
-  spec.summary       = %q{In PostgreSQL, when specifying a unique index, 'Where' can be used. It enables use on Rails. }
+  spec.description   = %q{pg_index_where will provide unique index with WHERE statement on PostgreSQL with migrate the database on Rails.}
+  spec.summary       = %q{When create unique index on PostgreSQL, you can speficy WHERE statement as you know. pg_index_where will provide this function with migrate the database.}
   spec.homepage      = 'https://github.com/kazuhisa/pg_index_where'
   spec.license       = 'MIT'
 
