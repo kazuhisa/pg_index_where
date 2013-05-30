@@ -1,6 +1,8 @@
 # PgIndexWhere
 
-In PostgreSQL, when specifying a unique index, 'where' can be used. It enables use on Rails.
+When create unique index on PostgreSQL, you can speficy WHERE statement as you know.
+
+pg_index_where will provide this function with migrate the database.
 
 ## Installation
 
