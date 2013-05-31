@@ -1,6 +1,8 @@
 # PgIndexWhere
 
-TODO: Write a gem description
+When create unique index on PostgreSQL, you can speficy WHERE statement as you know.
+
+pg_index_where will provide this function with migrate the database.
 
 ## Installation
 
@@ -18,7 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add this option your migrate files.
+
+    :where => 'deleted_at is null'
+   
+Examples.
+
+    class AddIndex < ActiveRecord::Migration
+      def up
+        add_index "customers", ["code"], :name => "customers_idx01", :unique => true, :where => 'deleted_at is null'
+      end
+      
+      def down
+        remove_index "customers", :name => "customers_idx01"
+      end
+    end
+
 
 ## Contributing
 
